@@ -22,7 +22,7 @@ public class Project
     public string ProjectName { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    List<Task> Tasks { get; set; } = new List<Task>();
+    public List<Task> Tasks { get; set; } = new List<Task>();
 
     public Project(string projectName, DateTime startDate, DateTime endDate)
     {
