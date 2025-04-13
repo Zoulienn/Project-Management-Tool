@@ -18,12 +18,35 @@ namespace Project_Management_Tool;
 
 public class Task
 {
-    public string? Title { get; set; }
-    public string? Description { get; set;}
+    public string Title { get; set; }
+    public string Description { get; set;}
     public DateTime DueDate { get; set; }
     public Priority TaskPriority { get; set; }
-    public Status TaskStatus { get; set; }
-    public Project project { get; set; }
+    public Status TaskStatus { get; private set; }
+    public Project? Project { get; private set; }
+
+    public Task (string title, string description,DateTime dueDate,Priority taskPriority)
+    {
+        this.Title = title;
+        this.Description = description;
+        this.DueDate = dueDate;
+        this.TaskPriority = taskPriority;
+        this.TaskStatus = Status.NotStarted;
+    }
+
+    public void SetProject(Project project)
+    {
+        this.Project = project;
+    }
+
+    public void UpdateTaskStatus(Status newStatus)
+    {
+        this.TaskStatus = newStatus;
+    }
+
+    public void CompleteTask(){
+        this.TaskStatus = Status.Completed;
+    }
 
 }
 
