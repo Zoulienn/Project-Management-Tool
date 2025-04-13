@@ -37,5 +37,26 @@ public class Project
         Tasks.Add(task);
     }
 
-    
+    public List<Task> GetPendingTasks()
+    {
+        var result = Tasks.Where(task => task.TaskStatus != Status.Completed)
+                    .OrderBy(task => task.DueDate)
+                    .ToList();
+        return result;
+    }
+
+    public List<Task> GetOverdueTasks()
+    {
+        var result = Tasks.Where(task => task.DueDate < DateTime.Now && task.TaskStatus != Status.Completed)
+                    .OrderBy(task => task.TaskPriority)
+                    .ToList();
+        return result;
+    }
+
+    public List<Task> GetTasksByPriority(Priority priority)
+    {
+        return Tasks.Where(task => task.TaskPriority == priority)
+                    .OrderByDescending(task => task.DueDate)
+                    .ToList();
+    }
 }
