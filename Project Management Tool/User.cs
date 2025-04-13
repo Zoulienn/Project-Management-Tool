@@ -36,7 +36,7 @@ public class User
     public User (string UserName, string password)
     {
         this.UserName = UserName;
-        this.Password = password;
+        Password = password;
         this.UserProjects = new List<Project>();
     }
 

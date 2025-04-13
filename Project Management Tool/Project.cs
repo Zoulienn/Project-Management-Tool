@@ -33,6 +33,10 @@ public class Project
 
     public void AddTask(Task task)
     {
+        if (task == null)
+        {
+            throw new ArgumentNullException(nameof(task), "Task cannot be empty.");
+        }
         task.SetProject(this); //link task to project
         Tasks.Add(task);
     }
