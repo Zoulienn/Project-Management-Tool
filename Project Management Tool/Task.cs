@@ -3,7 +3,8 @@ using System;
 namespace Project_Management_Tool;
 
 /*
-	•	Task:
+	•	Task
+
 	•	Properties:
 	•	Title (string)
 	•	Description (string)
@@ -11,6 +12,7 @@ namespace Project_Management_Tool;
 	•	Priority (enum: Low, Medium, High)
 	•	Status (enum: NotStarted, InProgress, Completed)
 	•	Project (Project) — a task belongs to a project
+    
 	•	Methods:
 	•	CompleteTask() — change status to Completed
 	•	UpdateTaskStatus(Status newStatus) — change status to a new status (e.g., InProgress)
