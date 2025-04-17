@@ -120,7 +120,21 @@ class Program
             return new List<User>();
 
         string json = File.ReadAllText("users.json");
-        return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
+        var loadedUsers = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
+
+        // Reconnect tasks with their projects
+        foreach (var user in loadedUsers)
+        {
+            foreach (var project in user.UserProjects)
+            {
+                foreach (var task in project.Tasks)
+                {
+                    task.SetProject(project);
+                }
+            }
+        }
+
+        return loadedUsers;
     }
 
     public static void UserMenu(User user)
@@ -160,10 +174,89 @@ class Program
                     break;
 
                 case 6:
-                    //project manage
+                    ManageProject();
                     break;
             }
 
         } while (choice != -1);
     }
+
+    static void ManageProject()
+    {
+        Console.Write("Enter Project Name: ");
+        string? name = Console.ReadLine();
+        var project = currentUser!.UserProjects.FirstOrDefault(p => p.ProjectName == name);
+        if (project == null)
+        {
+            Console.WriteLine("Project not found.");
+            Console.ReadKey();
+            return;
+        }
+
+        int choice;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine($"Managing: {project.ProjectName}");
+            Console.WriteLine("7. View All Tasks in This Project");
+            Console.WriteLine("8. Add a New Task to This Project");
+            Console.WriteLine("9. Get Pending Tasks");
+            Console.WriteLine("10. Get Overdue Tasks");
+            Console.WriteLine("11. Get Tasks by Priority");
+            Console.WriteLine("12. Back to Main Menu");
+            Console.Write("Choice: ");
+            choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 7:
+                    foreach (var task in project.Tasks)
+                        Console.WriteLine($"{task.Title} - {task.TaskStatus} - Due: {task.DueDate.ToShortDateString()}");
+                    Console.ReadKey();
+                    break;
+                case 8:
+                    Console.Write("Task Title: ");
+                    string title = Console.ReadLine()??"";
+                    Console.Write("Description: ");
+                    string desc = Console.ReadLine()??"";
+                    Console.Write("Due Date (yyyy-mm-dd): ");
+                    DateTime due = DateTime.Parse(Console.ReadLine()??"");
+                    Console.Write("Priority (Low/Medium/High): ");
+                    Priority pri = Enum.Parse<Priority>(Console.ReadLine()??"", true);
+
+                    Task taskToAdd = new Task(title, desc, due, pri);
+                    taskToAdd.SetProject(project);
+                    var actualProject = currentUser.UserProjects.FirstOrDefault(p => p.ProjectName == project.ProjectName);
+                    if (actualProject != null)
+                    {
+                        actualProject.Tasks.Add(taskToAdd);
+                        SaveUsers(users);
+                        Console.WriteLine("Task added and saved!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Could not find project to assign task.");
+                    }
+                    break;
+                case 9:
+                    foreach (var t in project.GetPendingTasks())
+                        Console.WriteLine($"{t.Title} - {t.TaskStatus}");
+                    Console.ReadKey();
+                    break;
+                case 10:
+                    foreach (var t in project.GetOverdueTasks())
+                        Console.WriteLine($"{t.Title} - {t.DueDate.ToShortDateString()} - {t.TaskStatus}");
+                    Console.ReadKey();
+                    break;
+                case 11:
+                    Console.Write("Priority: ");
+                    Priority p = Enum.Parse<Priority>(Console.ReadLine()??"", true);
+                    foreach (var t in project.GetTasksByPriority(p))
+                        Console.WriteLine($"{t.Title} - Due: {t.DueDate.ToShortDateString()}");
+                    Console.ReadKey();
+                    break;
+            }
+        } while (choice != 12);
+    }
+
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Project_Management_Tool;
 
@@ -25,6 +26,8 @@ public class Task
     public DateTime DueDate { get; set; }
     public Priority TaskPriority { get; set; }
     public Status TaskStatus { get; private set; }
+    
+    [JsonIgnore] // prevents circular reference issue
     public Project? Project { get; private set; }
 
     public Task (string title, string description,DateTime dueDate,Priority taskPriority)
