@@ -144,9 +144,16 @@ class Program
         {
             Console.Clear();
             Console.WriteLine($"Welcome, {user.UserName}!");
+            //project side
             Console.WriteLine("4. Create New Project");
             Console.WriteLine("5. View All My Projects");
             Console.WriteLine("6. Select a Project to Manage");
+            //task side
+            Console.WriteLine("13. View All Tasks (Sorted by Due Date)");
+            Console.WriteLine("14. View Completed Tasks (Sorted by Priority)");
+            Console.WriteLine("15. Mark Task as Completed");
+            Console.WriteLine("16. Update Task Status");
+
             Console.WriteLine("-1. Logout");
             Console.Write("Choice: ");
             int.TryParse(Console.ReadLine(), out choice);
@@ -176,7 +183,15 @@ class Program
                 case 6:
                     ManageProject();
                     break;
-            }
+
+                case 13:
+                    ShowAllTasks();
+                    break;
+
+                case 14:
+                    ShowCompletedTasks();
+                    break;
+                }
 
         } while (choice != -1);
     }
@@ -257,6 +272,21 @@ class Program
                     break;
             }
         } while (choice != 12);
+    }
+
+
+    static void ShowAllTasks()
+    {
+        foreach (var task in currentUser!.GetAllTasks())
+            Console.WriteLine($"{task.Title} - Due: {task.DueDate.ToShortDateString()} - {task.TaskStatus}");
+        Console.ReadKey();
+    }
+
+    static void ShowCompletedTasks()
+    {
+        foreach (var task in currentUser!.GetCompletedTasks())
+            Console.WriteLine($"{task.Title} - Priority: {task.TaskPriority}");
+        Console.ReadKey();
     }
 
 }
