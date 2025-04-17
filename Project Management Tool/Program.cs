@@ -28,6 +28,7 @@ class Program
             {
                 case 1:
                     // Create new user
+                    CreateNewUser();
                     break;
                 case 2:
                     Console.WriteLine("");
@@ -38,34 +39,47 @@ class Program
 
     public static void CreateNewUser()
     {
-        string? name, password;
-        bool valid = true;
-        do
+        string? name ;
+        string? password ;
+
+        while (true)
         {
-            try
+            Console.Write("Enter User Name: ");
+            name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name))
             {
-
-                do
-                {
-                    Console.Write("Enter User Name: ");
-                    name = Console.ReadLine();
-                } while (name != null || name == "");
-
-                do
-                {
-                    Console.Write("Enter User Password: ");
-                    password = Console.ReadLine();
-                } while (password != null || password.Length < 8 );
-                
+                Console.WriteLine("Username cannot be empty or whitespace.");
             }
-            catch (System.Exception)
+            else
             {
-                
-                throw;
+                break;
             }
-        } while (!valid);
+        }
 
-        User user = new User("julien","password1234");
+        while (true)
+        {
+            Console.Write("Enter User Password: ");
+            password = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(password) || password.Length < 8)
+            {
+                Console.WriteLine("Password must be at least 8 characters long.");
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Create the user
+        User user = new User(name, password);
+        Console.WriteLine("User created successfully!");
+    }
+
+    public static int Login()
+    {
+        return 1;
     }
 }
 
