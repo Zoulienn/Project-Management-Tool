@@ -125,6 +125,45 @@ class Program
 
     public static void UserMenu(User user)
     {
-        
+        int choice = 0;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine($"Welcome, {user.UserName}!");
+            Console.WriteLine("4. Create New Project");
+            Console.WriteLine("5. View All My Projects");
+            Console.WriteLine("6. Select a Project to Manage");
+            Console.WriteLine("-1. Logout");
+            Console.Write("Choice: ");
+            int.TryParse(Console.ReadLine(), out choice);
+
+            switch (choice)
+            {
+                case 4:
+                    Console.Write("Enter project name: ");
+                    string projectName = Console.ReadLine()??"";
+                    Console.Write("Enter start date (yyyy-mm-dd): ");
+                    DateTime start = DateTime.Parse(Console.ReadLine()??"");
+                    Console.Write("Enter end date (yyyy-mm-dd): ");
+                    DateTime end = DateTime.Parse(Console.ReadLine()??"");
+                    Project project = new Project(projectName, start, end);
+                    user.AddProject(project);
+                    SaveUsers(users);
+                    break;
+
+                case 5:
+                    foreach (var p in user.UserProjects)
+                    {
+                        Console.WriteLine($"- {p.ProjectName} ({p.StartDate.ToShortDateString()} to {p.EndDate.ToShortDateString()})");
+                    }
+                    Console.ReadKey();
+                    break;
+
+                case 6:
+                    //project manage
+                    break;
+            }
+
+        } while (choice != -1);
     }
 }
