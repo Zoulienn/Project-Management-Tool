@@ -183,13 +183,23 @@ class Program
                 case 6:
                     ManageProject();
                     break;
-
+                    
                 case 13:
                     ShowAllTasks();
                     break;
 
                 case 14:
                     ShowCompletedTasks();
+                    break;
+
+                case 15:
+                    MarkTaskCompleted();
+                    SaveUsers(users);
+                    break;
+
+                case 16:
+                    UpdateTaskStatus();
+                    SaveUsers(users);
                     break;
                 }
 
@@ -286,6 +296,30 @@ class Program
     {
         foreach (var task in currentUser!.GetCompletedTasks())
             Console.WriteLine($"{task.Title} - Priority: {task.TaskPriority}");
+        Console.ReadKey();
+    }
+
+    static void MarkTaskCompleted()
+    {
+        Console.Write("Enter task title to mark complete: ");
+        string? title = Console.ReadLine();
+        var task = currentUser!.GetAllTasks().FirstOrDefault(t => t.Title == title);
+        task?.CompleteTask();
+        Console.WriteLine("Marked as completed.");
+        Console.ReadKey();
+    }
+
+    static void UpdateTaskStatus()
+    {
+        Console.Write("Enter task title: ");
+        string? title = Console.ReadLine();
+        var task = currentUser!.GetAllTasks().FirstOrDefault(t => t.Title == title);
+        if (task == null) return;
+
+        Console.Write("New Status (NotStarted, InProgress, Completed): ");
+        Status status = Enum.Parse<Status>(Console.ReadLine()??"", true);
+        task.UpdateTaskStatus(status);
+        Console.WriteLine("Status updated.");
         Console.ReadKey();
     }
 
