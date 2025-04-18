@@ -13,3 +13,4 @@
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.pdb
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.genruntimeconfig.cache
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/ref/Project Management Tool.dll
+/Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.sourcelink.json
