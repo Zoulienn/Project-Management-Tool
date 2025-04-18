@@ -7,6 +7,7 @@
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.AssemblyInfoInputs.cache
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.AssemblyInfo.cs
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.csproj.CoreCompileInputs.cache
+/Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.sourcelink.json
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.dll
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/refint/Project Management Tool.dll
 /Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/obj/Debug/net9.0/Project Management Tool.pdb

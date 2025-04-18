@@ -69,7 +69,7 @@ public class User
     {
         return UserProjects.SelectMany(project => project.Tasks)
                            .Where(task => task.TaskStatus == Status.Completed)
-                           .OrderBy(task => task.TaskPriority)
+                           .OrderByDescending(task => task.TaskPriority)
                            .ToList();   
     }
 }

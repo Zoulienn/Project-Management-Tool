@@ -684,6 +684,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Project Management Tool/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Project Management Tool.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Project Management Tool.dll": {}
+        }
       }
     }
   },
@@ -1643,12 +1653,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Project Management Tool/1.0.0": {
+      "type": "project",
+      "path": "../Project Management Tool/Project Management Tool.csproj",
+      "msbuildProject": "../Project Management Tool/Project Management Tool.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "MSTest >= 3.6.4",
-      "Microsoft.NET.Test.Sdk >= 17.12.0"
+      "Microsoft.NET.Test.Sdk >= 17.12.0",
+      "Project Management Tool >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1675,7 +1691,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/Project Management Tool.csproj": {
+              "projectPath": "/Users/zoulien/Desktop/bamboo/Project Management Tool/Project Management Tool/Project Management Tool.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
