@@ -18,6 +18,7 @@ namespace Project_Management_Tool;
 */
 public class User
 {
+    public int UserId { get; set; } // PK
     public string UserName { get; set;}
     private string UserPassword = string.Empty;
     public string Password { 
@@ -32,6 +33,8 @@ public class User
             }
         }}
     public List<Project> UserProjects{ get; set; }
+
+     public User() {} // for EF Core
 
     public User (string UserName, string password)
     {

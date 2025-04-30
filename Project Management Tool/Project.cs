@@ -19,11 +19,17 @@ namespace Project_Management_Tool;
 */
 public class Project
 {
+    public int ProjectId { get; set; } // Primary Key
     public string ProjectName { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public List<Task> Tasks { get; set; } = new List<Task>();
 
+    public int UserId { get; set; } // FK
+    public User User { get; set; }  // Navigation
+
+     public Project() {} // For EF core
+     
     public Project(string projectName, DateTime startDate, DateTime endDate)
     {
         this.ProjectName = projectName;

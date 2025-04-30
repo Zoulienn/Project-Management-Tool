@@ -21,14 +21,19 @@ namespace Project_Management_Tool;
 
 public class Task
 {
+    public int TaskId { get; set; } // PK
     public string Title { get; set; }
     public string Description { get; set;}
     public DateTime DueDate { get; set; }
     public Priority TaskPriority { get; set; }
     public Status TaskStatus { get; private set; }
     
+    public int ProjectId { get; set; } // FK
+
     [JsonIgnore] // prevents circular reference issue
     public Project? Project { get; private set; }
+
+    public Task() {} // For EF core
 
     public Task (string title, string description,DateTime dueDate,Priority taskPriority)
     {
