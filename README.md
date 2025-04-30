@@ -1,7 +1,7 @@
 <h1 align="center">🧠 Project Management Tool</h1>
 
 
-<p align="center">A simple yet efficient console-based task and project management tool. Designed to help users track progress, manage deadlines, and organize tasks effectively using C# OOP principles, LINQ, and file persistence via JSON. Built with testing in mind using MSTest and structured for future expansion to EF Core and SQL Server via Docker.</p>
+<p align="center">A simple yet efficient console-based task and project management tool. Designed to help users track progress, manage deadlines, and organize tasks effectively using C# OOP principles, LINQ, and file persistence via JSON. Built with testing in mind using MSTest and structured for current expansion to EF Core and SQL Server via Docker.</p>
 
 
 <p align="center">
@@ -38,7 +38,7 @@
 → Core classes tested using MSTest for reliability and correctness.
 
 🧱 Ready for Scaling
-→ Future plans to integrate Entity Framework Core with SQL Server running in Docker.
+→ Currently working to integrate Entity Framework Core with SQL Server running in Docker.
 
 <hr>
 
@@ -48,6 +48,6 @@ C# & .NET	Core language and framework <br>
 LINQ	Advanced filtering and data manipulation <br>
 JSON	Lightweight data persistence layer <br>
 MSTest	Unit testing framework <br>
-EF Core (Planned)	ORM for DB migration to SQL Server <br>
-Docker (Planned)	For database containerization <br>
+EF Core ORM for DB migration to SQL Server <br>
+Docker 	For database containerization <br>
 

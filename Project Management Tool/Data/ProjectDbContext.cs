@@ -34,13 +34,4 @@ public class ProjectDbContext : DbContext
         modelBuilder.Entity<User>()
             .Ignore(u => u.Password);
     }
-
-    // Override OnConfiguring for the connection string (Not secure for now)
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ProjectManagementDB;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;");
-        }
-    }
 }
